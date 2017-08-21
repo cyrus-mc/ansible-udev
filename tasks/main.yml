@@ -1,12 +1,12 @@
+- name: Load a variable file based on fact k8s_facts.labels.role, or default if not found
+  include_vars: "{{ item }}"
+  with_first_found:
+  - "{{ ansible_local.k8s_facts.labels.role }}.yml"
+  - "default.yml"
+
 - name: Write udev/rules.d/{{ item.key }}
   template: 
     src: "rule.rules.j2"
     dest: "/etc/udev/rules.d/{{ item.key }}.rules"
     mode: 0644
   with_dict: "{{ rules }}"
-
-  #- sysctl:
-  #  name: "{{ item.key }}"
-  #  value: "{{ item.value.value }}"
-  #  state: "{{ item.value.state }}"
-  #with_dict: "{{ sysctl }}"
