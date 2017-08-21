@@ -1,0 +1,12 @@
+---
+rules:
+  60-kubernetes-mounts:
+    ACTION:
+    - 'add'
+    - 'change'
+    KERNEL: 'xvdb[a-z]+'
+    ATTR:
+    - name: 'queue/scheduler'
+      value: 'none'
+    - name: 'bdi/read_ahead_kb'
+      value: 16

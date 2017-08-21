@@ -1,0 +1,12 @@
+- name: Write udev/rules.d/{{ item.key }}
+  template: 
+    src: "rule.rules.j2"
+    dest: "/etc/udev/rules.d/{{ item.key }}.rules"
+    mode: 0644
+  with_dict: "{{ rules }}"
+
+  #- sysctl:
+  #  name: "{{ item.key }}"
+  #  value: "{{ item.value.value }}"
+  #  state: "{{ item.value.state }}"
+  #with_dict: "{{ sysctl }}"

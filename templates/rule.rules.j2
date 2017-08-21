@@ -1,0 +1,1 @@
+ACTION=="{{ item.value['ACTION'] | join('|') }}", KERNEL=="{{ item.value['KERNEL'] }}"{% for attribute in item.value['ATTR'] %}, ATTR{{ '{' }}{{ attribute.name }}}="{{ attribute.value }}"{% endfor %}
